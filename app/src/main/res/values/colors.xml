@@ -2,5 +2,11 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#E03648</color>
+    <color name="colorBackground">#2E2E2E</color>
+    <color name="progressRed">#DB2521</color>
+    <color name="progressBlue">#DFDD50</color>
+    <color name="button">#768296</color>
+    <color name="pink">#FFE7E4</color>
+    <color name="progress">#ADADAD</color>
 </resources>

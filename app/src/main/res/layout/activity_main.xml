@@ -1,18 +1,321 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+
     tools:context=".MainActivity">
 
+    <ProgressBar
+        android:id="@+id/regularBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:progressDrawable="@color/progress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.051" />
+
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/regularBar"
+        android:layout_alignBottom="@+id/regularBar"
+        android:text="Регулярные расходы"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/regularBar"
+        app:layout_constraintEnd_toEndOf="@+id/regularBar"
+        app:layout_constraintStart_toStartOf="@+id/regularBar"
+        app:layout_constraintTop_toTopOf="@+id/regularBar" />
+
+    <ProgressBar
+        android:id="@+id/educationBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/regularBar"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:progressDrawable="@color/progress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regularBar"
+        app:layout_constraintVertical_bias="0.029999971" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/educationBar"
+        android:layout_alignBottom="@+id/educationBar"
+        android:text="Образование"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/educationBar"
+        app:layout_constraintEnd_toEndOf="@+id/educationBar"
+        app:layout_constraintStart_toStartOf="@+id/educationBar"
+        app:layout_constraintTop_toTopOf="@+id/educationBar" />
+
+    <ProgressBar
+        android:id="@+id/entertainmentBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/educationBar"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:progressDrawable="@color/progress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/educationBar"
+        app:layout_constraintVertical_bias="0.041" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/regularBar"
+        android:layout_alignBottom="@+id/entertainmentBar"
+        android:text="Развлечения"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/entertainmentBar"
+        app:layout_constraintEnd_toEndOf="@+id/entertainmentBar"
+        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintStart_toStartOf="@+id/entertainmentBar"
+        app:layout_constraintTop_toTopOf="@+id/entertainmentBar" />
+
+    <ProgressBar
+        android:id="@+id/bigBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/entertainmentBar"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:progressDrawable="@color/progress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/entertainmentBar"
+        app:layout_constraintVertical_bias="0.04000002" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/regularBar"
+        android:layout_alignBottom="@+id/bigBar"
+        android:text="Большие покупки"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/bigBar"
+        app:layout_constraintEnd_toEndOf="@+id/bigBar"
+        app:layout_constraintStart_toStartOf="@+id/bigBar"
+        app:layout_constraintTop_toTopOf="@+id/bigBar" />
+
+    <ProgressBar
+        android:id="@+id/giftBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/bigBar"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:progressDrawable="@color/progress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bigBar"
+        app:layout_constraintVertical_bias="0.049" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/giftBar"
+        android:layout_alignBottom="@+id/giftBar"
+        android:text="Подарки и благотворительность"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/giftBar"
+        app:layout_constraintEnd_toEndOf="@+id/giftBar"
+        app:layout_constraintStart_toStartOf="@+id/giftBar"
+        app:layout_constraintTop_toTopOf="@+id/giftBar" />
+
+    <ProgressBar
+        android:id="@+id/safeBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/giftBar"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:progressDrawable="@color/progress"
+        app:layout_constraintBottom_toTopOf="@+id/expenseBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/giftBar"
+        app:layout_constraintVertical_bias="0.06999999" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/giftBar"
+        android:layout_alignBottom="@+id/giftBar"
+        android:text="Накопления"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/safeBar"
+        app:layout_constraintEnd_toEndOf="@+id/safeBar"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="@+id/safeBar"
+        app:layout_constraintTop_toTopOf="@+id/safeBar"
+        app:layout_constraintVertical_bias="0.51" />
+
+    <Button
+        android:id="@+id/reportBtn"
+        android:layout_width="100dp"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="8dp"
+        android:layout_toEndOf="@+id/expenseBtn"
+        android:background="@color/button"
+        android:onClick="onClickReport"
+        android:text="Отчеты"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toEndOf="@+id/expenseBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <Button
+        android:id="@+id/incomeBtn"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/button"
+        android:onClick="onClickIncome"
+        android:text="Доходы"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/expenseBtn"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <Button
+        android:id="@+id/expenseBtn"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/incomeBtn"
+        android:background="@color/button"
+        android:onClick="onClickExpense"
+        android:text="Расходы"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toTopOf="@+id/incomeBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/safeBar"
+        app:layout_constraintVertical_bias="0.48000002"
+        app:srcCompat="@color/progress" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toTopOf="@+id/incomeBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.62"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/safeBar"
+        app:layout_constraintVertical_bias="0.48000002"
+        app:srcCompat="@color/progress" />
+
+    <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Доход за \nмесяц"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.076" />
+
+    <TextView
+        android:id="@+id/mainMenuTotalIncome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="999999"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Расходы за \nмесяц"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.056" />
+
+    <TextView
+        android:id="@+id/mainMenuTotalExpense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="999999"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
