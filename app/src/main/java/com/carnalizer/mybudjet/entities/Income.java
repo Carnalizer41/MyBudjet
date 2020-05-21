@@ -5,9 +5,9 @@ import java.util.Date;
 public class Income {
 
     private float incomeAmount;
-    private Date date;
+    private String date;
 
-    public Income(float incomeAmount, Date date) {
+    public Income(float incomeAmount, String date) {
         this.incomeAmount = incomeAmount;
         this.date = date;
     }
@@ -16,7 +16,7 @@ public class Income {
         return incomeAmount;
     }
 
-    public Date getDate() {
+    public String getIncomeDate() {
         return date;
     }
 

@@ -3,54 +3,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorBackground">
-
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/incomeDate"
-        android:layout_width="155dp"
-        android:layout_height="29dp"
+        android:id="@+id/expenseDate"
+        android:layout_width="129dp"
+        android:layout_height="62dp"
         android:text="TextView"
         android:textAlignment="center"
-        android:textColor="#A5A5A5"
-        android:textSize="18sp"
+        android:textColor="@color/progress"
+        android:textSize="15sp"
         android:textStyle="bold"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
-        android:id="@+id/incomeAmount"
-        android:layout_width="171dp"
-        android:layout_height="29dp"
+        android:id="@+id/expenseCategory"
+        android:layout_width="161dp"
+        android:layout_height="62dp"
         android:text="TextView"
         android:textAlignment="center"
-        android:textColor="#A5A5A5"
-        android:textSize="18sp"
+        android:textColor="@color/progress"
+        android:textSize="15sp"
         android:textStyle="bold"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/incomeDate"
+        app:layout_constraintStart_toEndOf="@+id/expenseDate"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004" />
+        app:layout_constraintVertical_bias="0.023" />
 
-    <ImageButton
-        android:id="@+id/deleteIncomeBtn"
-        android:layout_width="37dp"
-        android:layout_height="29dp"
-        android:background="@android:color/transparent"
-        android:onClick="onClickDeleteIncome"
+    <TextView
+        android:id="@+id/expenseAmount"
+        android:layout_width="105dp"
+        android:layout_height="62dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/progress"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/incomeAmount"
+        app:layout_constraintStart_toEndOf="@+id/expenseCategory"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004"
-        app:srcCompat="@android:drawable/ic_delete" />
+        app:layout_constraintVertical_bias="0.022" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

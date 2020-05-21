@@ -8,61 +8,58 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.carnalizer.mybudjet.adapters.IncomeAdapter;
+import com.carnalizer.mybudjet.adapters.ExpenseCategoryAdapter;
 import com.carnalizer.mybudjet.db.DB;
-import com.carnalizer.mybudjet.entities.Income;
+import com.carnalizer.mybudjet.db.ExpenseCategoryData;
+import com.carnalizer.mybudjet.entities.Expense;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class IncomeActivity extends AppCompatActivity {
+
+public class ChooseExpenseActivity extends AppCompatActivity {
 
     DB dbHelper;
-    private Button addIncomeBtn;
-    private ListView allIncomes;
-    private IncomeAdapter adapter;
-    private Calendar dateAndTime1=new GregorianCalendar();
+    private ListView allTasks;
+    private ExpenseCategoryAdapter adapter;
+    private Calendar dateAndTime1 = new GregorianCalendar();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_income);
+        setContentView(R.layout.activity_choose_expense);
         dbHelper = new DB(this);
-        addIncomeBtn = findViewById(R.id.addIncomeBth);
-        allIncomes = findViewById(R.id.incomeList);
+        allTasks = findViewById(R.id.categoriesList);
         loadAllTasks();
     }
 
-    private void loadAllTasks()
-    {
-        ArrayList<Income> taskList = dbHelper.getIncome();
-        if(adapter==null)
-        {
-            adapter = new IncomeAdapter(this,R.layout.income_row, taskList);
-            allIncomes.setAdapter(adapter);
-        }
-        else
-        {
+    private void loadAllTasks() {
+        ArrayList<String> taskList = ExpenseCategoryData.loadData();
+        if (adapter == null) {
+            adapter = new ExpenseCategoryAdapter(this, R.layout.expense_category_row,
+                    taskList);
+            allTasks.setAdapter(adapter);
+        } else {
             adapter.clear();
             adapter.addAll(taskList);
             adapter.notifyDataSetChanged();
         }
     }
 
-    public void onClickAddIncome(View view)
+    public void onClickAddExpense(final View view)
     {
+
         final EditText userGetMoney = new EditText(this);
         final AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("Новый доход!")
+                .setTitle("Новая транзакция")
                 .setMessage("Введите сумму и дату")
                 .setNeutralButton("Дата",new DialogInterface.OnClickListener() {
                     @Override
@@ -88,13 +85,13 @@ public class IncomeActivity extends AppCompatActivity {
                 Boolean wantToCloseDialog = false;
                 if(String.valueOf(userGetMoney.getText()).isEmpty())
                 {
-                    Toast.makeText(IncomeActivity.this, "Введите сумму!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChooseExpenseActivity.this, "Введите сумму!", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     if(!isNumeric(String.valueOf(userGetMoney.getText())))
                     {
-                        Toast.makeText(IncomeActivity.this, "Вы ввели неверное значение суммы", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ChooseExpenseActivity.this, "Вы ввели неверное значение суммы", Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
@@ -104,10 +101,14 @@ public class IncomeActivity extends AppCompatActivity {
                 if(wantToCloseDialog)
                 {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-                    Income income = new Income(Float.parseFloat(String.valueOf(userGetMoney.getText())),
-                            sdf.format(dateAndTime1.getTime()));
-                    dbHelper.insertIncomeData(income.getIncomeDate(),income.getIncomeAmount());
-                    loadAllTasks();
+                    View parent = (View) view.getParent();
+                    TextView textcat = (TextView) parent.findViewById(R.id.category);
+                    String s = String.valueOf(textcat.getText());
+                    Expense expense = new Expense(Float.parseFloat(String.valueOf(userGetMoney.getText())),
+                            s, sdf.format(dateAndTime1.getTime()));
+                    dbHelper.insertExpenseData(expense.getExpenseDate(),expense.getAmount(),expense.getExpenseName());
+                    Intent intent = new Intent(ChooseExpenseActivity.this, ExpenseActivity.class);
+                    startActivity(intent);
                     dialog.dismiss();
                 }
             }
@@ -120,7 +121,7 @@ public class IncomeActivity extends AppCompatActivity {
             {
                 Boolean wantToCloseDialog = false;
                 //Do stuff, possibly set wantToCloseDialog to true then...
-                new DatePickerDialog(IncomeActivity.this, d1,
+                new DatePickerDialog(ChooseExpenseActivity.this, d1,
                         dateAndTime1.get(Calendar.YEAR),
                         dateAndTime1.get(Calendar.MONTH),
                         dateAndTime1.get(Calendar.DAY_OF_MONTH))
@@ -154,34 +155,4 @@ public class IncomeActivity extends AppCompatActivity {
         return true;
     }
 
-    public void onClickDeleteIncome(final View view)
-    {
-
-        final AlertDialog dialog = new AlertDialog.Builder(IncomeActivity.this)
-                .setTitle("Удалить доход?")
-                .setPositiveButton("Удалить", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        View parent = (View) view.getParent();
-                        TextView textDate = (TextView) parent.findViewById(R.id.incomeDate);
-                        String date = String.valueOf(textDate.getText());
-                        TextView textAmount = (TextView) parent.findViewById(R.id.incomeAmount);
-                        String s = String.valueOf(textAmount.getText());
-                        s = s.replaceAll("₴","");
-                        Float amount = Float.parseFloat(s);
-                        dbHelper.deleteIncomeData(date, amount);
-                        loadAllTasks();
-                    }
-                })
-                .setNegativeButton("ГАЛЯ, ОТМЕНА!",null)
-                .create();
-        dialog.show();
-    }
-
-
-    public void onClickMainMenu(View view)
-    {
-        Intent intent = new Intent(IncomeActivity.this, MainActivity.class);
-        startActivity(intent);
-    }
 }

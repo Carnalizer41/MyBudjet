@@ -9,12 +9,12 @@
 
     <TextView
         android:id="@+id/expenseDate"
-        android:layout_width="107dp"
-        android:layout_height="34dp"
+        android:layout_width="150dp"
+        android:layout_height="31dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="#A5A5A5"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,12 +25,28 @@
 
     <TextView
         android:id="@+id/expenseCategory"
-        android:layout_width="146dp"
-        android:layout_height="34dp"
+        android:layout_width="307dp"
+        android:layout_height="30dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="#A5A5A5"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expenseDate"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/expenseAmount"
+        android:layout_width="156dp"
+        android:layout_height="31dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#A5A5A5"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,27 +55,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.004" />
 
-    <TextView
-        android:id="@+id/expenseAmount"
-        android:layout_width="118dp"
-        android:layout_height="34dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="#A5A5A5"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
-        app:layout_constraintStart_toEndOf="@+id/expenseCategory"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004" />
-
     <ImageButton
         android:id="@+id/deleteExpenseBtn"
-        android:layout_width="36dp"
-        android:layout_height="34dp"
+        android:layout_width="63dp"
+        android:layout_height="61dp"
         android:background="@android:color/transparent"
+        android:onClick="onClickDeleteExpense"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
